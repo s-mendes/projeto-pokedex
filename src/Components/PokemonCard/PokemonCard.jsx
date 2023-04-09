@@ -1,6 +1,38 @@
-function PokemonCard () {
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Pokemon from '../Pokemon/Pokemon'
+import { PokemonsContainer, CardsContainer } from './pokemonCardStyle'
+
+
+function PokemonCard() {
+
+    const [pokemons, setPokemons] = useState([]);
+
+    async function getPokemons() {
+        try {
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`)
+            setPokemons(response.data.results)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getPokemons()
+    }, []);
+
     return (
         <>
+            <PokemonsContainer>
+                <h1>
+                    Todos os Pokemons
+                </h1>
+                <CardsContainer >
+                    {pokemons.map(pokemon => <Pokemon key={pokemon.url} pokeName={pokemon.name} />)}
+                </CardsContainer>
+            </PokemonsContainer>
+
         </>
     )
 }
