@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { PokemonCard, PokemonId, PokemonName, PokemonTypes, PokemonDetails, PokemonImage, CaptureButton, Type } from './PokemonStyle'
+import { useNavigate } from 'react-router-dom';
 
 function Pokemon(props) {
     const [pokemonId, setPokemonId] = useState([]);
@@ -9,6 +10,7 @@ function Pokemon(props) {
     const [pokemonType, setPokemonType] = useState([]);
     const [mainType, setMainType] = useState([]);
     const [load, setLoad] = useState(false)
+    const navigate = useNavigate();
 
     async function getPokemon() {
         try {
@@ -33,6 +35,10 @@ function Pokemon(props) {
         const newStr = str[0].toUpperCase() + str.substr(1);
         return newStr
     }
+    
+    function goToDetailPage (pokemonName) {
+        navigate(`/detail/${pokemonName}`);
+    }
 
     return (
         <>
@@ -54,7 +60,7 @@ function Pokemon(props) {
                     </PokemonTypes>
                 </div>
                 <div>
-                <PokemonDetails>
+                <PokemonDetails onClick={() => goToDetailPage(props.pokeName)}>
                         Detalhes
                     </PokemonDetails>
                     <PokemonImage src={pokemonImage} />

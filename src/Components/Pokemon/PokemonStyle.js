@@ -208,6 +208,9 @@ export const PokemonDetails = styled.a`
     flex: none;
     order: 0;
     flex-grow: 0;
+    :hover {
+        cursor: pointer;
+    }
 `
 
 export const PokemonImage = styled.img`
