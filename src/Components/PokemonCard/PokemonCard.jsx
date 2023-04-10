@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Pokemon from '../Pokemon/Pokemon'
 import { PokemonsContainer, CardsContainer } from './pokemonCardStyle'
 
-
 function PokemonCard() {
 
     const [pokemons, setPokemons] = useState([]);
