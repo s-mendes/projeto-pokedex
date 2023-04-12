@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Pokemon from '../Pokemon/Pokemon'
 import { PokemonsContainer, CardsContainer } from './pokemonCardStyle'
+import { BASE_URL } from '../../constants/constants';
 
 function PokemonCard() {
 
@@ -9,7 +10,7 @@ function PokemonCard() {
 
     async function getPokemons() {
         try {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`)
+            const response = await axios.get(`${BASE_URL}?limit=151&offset=0`)
             setPokemons(response.data.results)
         }
         catch (error) {

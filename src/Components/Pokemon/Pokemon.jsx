@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { PokemonCard, PokemonId, PokemonName, PokemonTypes, PokemonDetails, PokemonImage, CaptureButton, Type } from './PokemonStyle'
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../constants/constants';
 
 function Pokemon(props) {
     const [pokemonId, setPokemonId] = useState([]);
@@ -13,15 +14,16 @@ function Pokemon(props) {
     const navigate = useNavigate();
 
     async function getPokemon() {
+        setLoad(true)
         try {
-            setLoad(true)
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokeName}/`);
+            const response = await axios.get(`${BASE_URL}/${props.pokeName}/`);
             setPokemonId(response.data.id)
             setPokemonImage(response.data.sprites.other["official-artwork"].front_default);
             setPokemonType(response.data.types)
             setMainType(response.data.types[0].type.name)
             setLoad(false)
         } catch (error) {
+            setLoad(false)
             console.log(error);
         }
     }

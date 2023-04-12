@@ -51,7 +51,7 @@ export const PokemonCard = styled.div`
     padding: 26px;
     width: 440px;
     height: 210px;
-    background-image: url('./pngwing.png');
+    background-image: url('/pngwing.png');
     background-repeat: no-repeat;
     background-position: right top;
     div:first-child{
@@ -93,6 +93,12 @@ export const PokemonTypes = styled.div`
 export const Type = styled.span`
     padding: 0.5rem 0.5rem 0.5rem 2.5rem;
     border: 1px dashed rgba(255, 255, 255, 0.47);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
     border-radius: 8px;
     background-repeat: no-repeat;
     background-position: 7px, center;
@@ -142,57 +148,46 @@ export const Type = styled.span`
     background-image: ${(props) => {
         switch (props.typeName) {
             case "grass":
-                return "url('./type/grass.png');"
+                return "url('/type/grass.png');"
             case "fire":
-                return "url('./type/fire.png');"
+                return "url('/type/fire.png');"
             case "water":
-                return "url('./type/water.png');"
+                return "url('/type/water.png');"
             case "bug":
-                return "url('./type/bug.png');"
+                return "url('/type/bug.png');"
             case "normal":
-                return "url('./type/normal.png');"
+                return "url('/type/normal.png');"
             case "dragon":
-                return "url('./type/dragon.png');"
+                return "url('/type/dragon.png');"
             case "electric":
-                return "url('./type/electric.png');"
+                return "url('/type/electric.png');"
             case "poison":
-                return "url('./type/poison.png');"
+                return "url('/type/poison.png');"
             case "ground":
-                return "url('./type/ground.png');"
+                return "url('/type/ground.png');"
             case "fairy":
-                return "url('./type/fairy.png');"
+                return "url('/type/fairy.png');"
             case "fighting":
-                return "url('./type/fighting.png');"
+                return "url('/type/fighting.png');"
             case "psychic":
-                return "url('./type/psychic.png');"
+                return "url('/type/psychic.png');"
             case "rock":
-                return "url('./type/rock.png');"
+                return "url('/type/rock.png');"
             case "ghost":
-                return "url('./type/ghost.png');"
+                return "url('/type/ghost.png');"
             case "ice":
-                return "url('./type/ice.png');"
+                return "url('/type/ice.png');"
             case "dark":
-                return "url('./type/dark.png');"
+                return "url('/type/dark.png');"
             case "flying":
-                return "url('./type/flying.png');"
+                return "url('/type/flying.png');"
             case "steel":
-                return "url('./type/steel.png');"
+                return "url('/type/steel.png');"
 
             default:
                 break;
         }
     }};
-    p {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
-        color: #FFFFFF;
-        flex: none;
-        order: 1;
-        flex-grow: 0;
-    }
 `
 
 export const PokemonDetails = styled.a`
