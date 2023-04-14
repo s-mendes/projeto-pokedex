@@ -6,7 +6,7 @@ function PokemonDetailPage () {
     const pathParams = useParams();
     return (
         <>
-            <Header />
+            <Header/>
             <PokemonDetail pokemonName={pathParams.pokemonName} />
         </>
     )
