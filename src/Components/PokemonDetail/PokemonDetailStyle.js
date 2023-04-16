@@ -20,6 +20,7 @@ export const CardContainer = styled.div`
 export const Card = styled.div`
     border-radius: 38px;
     margin: 0 25px;
+    padding: 25px 44px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -72,18 +73,22 @@ export const Card = styled.div`
 `
 
 export const ImgsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+
     div {
         width: 282px;
         height: 282px;
         background: #FFFFFF;
         border: 2px solid #FFFFFF;
         border-radius: 8px;
-        margin: 26px 35px;
         display: flex;
         align-items: center;
         justify-content: center;
         img{
-            scale: 2;
+            scale: 3;
         }
     }
 `
@@ -92,8 +97,56 @@ export const StatusContainer = styled.div`
     background: #FFFFFF;
     border-radius: 12px;
     width: 343px;
-    height: 613px;
-    margin: 26px 0;
+    padding: 1.5rem;
+    h2 {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 29px;
+        padding-bottom: 1.5rem;
+    }
+    &>div{
+        padding: 0.5rem;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+        color: #000000;
+        display: grid;
+        grid-template-columns: 2.5fr 0.5fr 5fr;
+        gap: 1em;
+    }
+    hr {
+        height: 1px;
+        background-color: #eff0f1;
+        border: none;
+    }
+    span:first-child{
+        color: #737473;
+        justify-self: flex-end;
+    }
+    .total{
+        font-weight: 800;
+    }      
+`
+
+export const StatsBar = styled.div`
+    align-self: center;
+    height: 10px;
+    width: 150px;
+    border-radius: 3px;
+    margin-right: 1.5rem;
+    
+    div{
+        border: 1px solid #ddd;
+        height: 100%;
+        border-radius: 3px;
+        background-color: ${(props) => props.percent > 80 ? `#ffdd69` : `#ff7c2d`};
+        width: ${(props) => `${props.percent}%`}
+        
+    }
 `
 
 export const PokemonInfoContainer = styled.div`
@@ -101,11 +154,19 @@ export const PokemonInfoContainer = styled.div`
 `
 
 export const PokemonId = styled.h3`
-
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
 `
 
 export const PokemonName = styled.h2`
-
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
 `
 
 export const PokemonTypes = styled.div`
@@ -217,7 +278,8 @@ export const Type = styled.span`
 `
 
 export const Infos = styled.div`
-
+    color: #ffffff;
+    height: 23%;
 `
 
 export const Moves = styled.div`
@@ -227,6 +289,7 @@ export const Moves = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 76%;
     
     span {
         padding: 0.5rem 0.5rem;
@@ -255,6 +318,7 @@ export const Moves = styled.div`
 
 export const PokemonImage = styled.img`
     height: 100%;
-    transform: translate(10%, -82%);
-    scale: 0.60;
+    transform: translate(10%, -65%);
+    scale: 0.90;
+    width: 300px;
 `

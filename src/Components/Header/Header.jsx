@@ -1,4 +1,4 @@
-import logo from '../../../public/logo.png';
+import logo from '/logo.png';
 import { HeaderContainer, Logo } from './headerStyle'
 
 function Header(props) {
