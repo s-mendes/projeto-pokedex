@@ -1,78 +1,43 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { PokemonCard, PokemonId, PokemonName, PokemonTypes, PokemonDetails, PokemonImage, CaptureButton, Type } from './PokemonStyle'
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../constants/constants';
+import { goToDetailPage } from '../../routes/coordinator'
+import useUpperCase from '../../hooks/useUpperCase'
 
 function Pokemon(props) {
-    const [pokemonId, setPokemonId] = useState([]);
-    const [pokemonName, setPokemonName] = useState([]);
-    const [pokemonImage, setPokemonImage] = useState([]);
-    const [pokemonType, setPokemonType] = useState([]);
-    const [mainType, setMainType] = useState([]);
-    const [load, setLoad] = useState(false)
+    const { pokemon } = props;
     const navigate = useNavigate();
-
-    async function getPokemon() {
-        setLoad(true)
-        try {
-            const response = await axios.get(`${BASE_URL}/${props.pokeName}/`);
-            setPokemonId(response.data.id)
-            setPokemonImage(response.data.sprites.other["official-artwork"].front_default);
-            setPokemonType(response.data.types)
-            setMainType(response.data.types[0].type.name)
-            setLoad(false)
-        } catch (error) {
-            setLoad(false)
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        getPokemon()
-        setPokemonName(() => upperCase(props.pokeName));
-    }, []);
-
-    function upperCase(str) {
-        const newStr = str[0].toUpperCase() + str.substr(1);
-        return newStr
-    }
-    
-    function goToDetailPage (pokemonName) {
-        navigate(`/detail/${pokemonName}`);
-    }
 
     return (
         <>
-
-            {load ? (<p></p>):
-            (<PokemonCard typeBg={mainType}>
+            <PokemonCard typeBg={pokemon.types[0].type.name}>
                 <div>
                     <PokemonId>
-                        #{pokemonId}
+                        #{pokemon.id}
                     </PokemonId>
                     <PokemonName>
-                        {pokemonName}
+                        {useUpperCase(pokemon.name)}
                     </PokemonName>
                     <PokemonTypes>
-                        {pokemonType.map((type) => {
+                        {pokemon.types.map((type) => {
                             return (
-                            <Type key={pokemonId + type.type.name} typeName={type.type.name}>{upperCase(type.type.name)} </Type>
-                            )})}
+                                <Type key={pokemon.id + type.type.name} typeName={type.type.name}>{useUpperCase(type.type.name)} </Type>
+                            )
+                        })}
                     </PokemonTypes>
                 </div>
                 <div>
-                <PokemonDetails onClick={() => goToDetailPage(props.pokeName)}>
+                    <PokemonDetails onClick={() => goToDetailPage(navigate, props.pokeName)}>
                         Detalhes
                     </PokemonDetails>
-                    <PokemonImage src={pokemonImage} />
+                    <PokemonImage src={pokemon.sprites.other["official-artwork"].front_default} />
                     <CaptureButton>
                         Capturar!
                     </CaptureButton>
                 </div>
-            </PokemonCard>)}
-            
-            
+            </PokemonCard>
+
+
         </>
     )
 }
