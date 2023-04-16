@@ -1,9 +1,9 @@
 import logo from '/logo.png';
 import { HeaderContainer, Logo } from './headerStyle'
 
-function Header() {
+function Header(props) {
 
-
+    console.log(props)
     return (
         <HeaderContainer>
             <Logo src={logo} alt="" />
