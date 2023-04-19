@@ -15,6 +15,13 @@ export const CardContainer = styled.div`
         line-height: 72px;
         color: #FFFFFF;
     }
+    section {
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(0%, -10%);
+    }
 `
 
 export const Card = styled.div`
@@ -22,6 +29,7 @@ export const Card = styled.div`
     margin: 0 25px;
     padding: 25px 44px;
     display: flex;
+    gap: 0.5rem;
     flex-direction: row;
     justify-content: space-between;
     background-image: url('/pngwing2.png');
@@ -289,7 +297,7 @@ export const Moves = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 76%;
+    height: 75.5%;
     
     span {
         padding: 0.5rem 0.5rem;

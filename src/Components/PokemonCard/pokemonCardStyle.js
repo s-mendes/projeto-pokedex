@@ -5,7 +5,21 @@ export const PokemonsContainer = styled.div`
     color: white;
     h1 {
         padding: 2rem 15px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 72px;
+        color: #FFFFFF;
     }
+    section {
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translate(0%, -10%);
+    }
+
 `
 
 export const CardsContainer = styled.div`

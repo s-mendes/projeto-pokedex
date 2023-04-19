@@ -8,7 +8,8 @@ import { getPokemons, getPokemonData } from '../API/pokemonAPI'
 function Router() {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [pokemonsPokedex, setPokemonsPokedex] = useState("");
+    const [ allPokemonsMenuVisible, setAllPokemonsMenuVisible ] = useState(false)
+    const [ pokemonsPokedex, setPokemonsPokedex ] = useState("");
 
     async function getAllPokemonsData() {
         try {
@@ -38,12 +39,16 @@ function Router() {
                     <PokemonListPage
                         loading={loading}
                         pokemons={pokemons}
+                        allPokemonsMenuVisible={allPokemonsMenuVisible}
+                        setAllPokemonsMenuVisible={setAllPokemonsMenuVisible}
                     />} />
                 <Route path={'/pokedex'} element={<PokedexPage />} />
                 <Route path={'/detail/:pokemonName'} element={
                     <PokemonDetailPage
                         loading={loading}
                         pokemons={pokemons}
+                        allPokemonsMenuVisible={allPokemonsMenuVisible}
+                        setAllPokemonsMenuVisible={setAllPokemonsMenuVisible}
                     />} />
 
             </Routes>
