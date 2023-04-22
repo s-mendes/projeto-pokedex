@@ -6,3 +6,7 @@ export function goToDetailPage(navigate, pokemonName) {
     navigate(`/detail/${pokemonName}`);
 }
 
+export function goToPokedex(navigate) {
+    navigate('/pokedex')
+}
+

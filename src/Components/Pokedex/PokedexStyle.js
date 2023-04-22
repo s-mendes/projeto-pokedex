@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+
 export const PokemonsContainer = styled.div`
     background-color: #5E5E5E;
     color: white;
+    min-height: 85.1vh;
     h1 {
         padding: 2rem 15px;
         font-family: 'Poppins';

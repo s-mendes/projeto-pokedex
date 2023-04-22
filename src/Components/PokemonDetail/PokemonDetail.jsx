@@ -1,6 +1,7 @@
 import { CardContainer, ImgsContainer, StatusContainer, PokemonInfoContainer, Infos, Moves, PokemonImage, Card, PokemonId, PokemonName, PokemonTypes, Type, StatsBar } from './PokemonDetailStyle'
 import useUpperCase from '../../hooks/useUpperCase'
-import { useState } from 'react';
+import {  useState } from 'react';
+import { ClipLoader } from 'react-spinners'
 
 function PokemonDetail(props) {
     const { pokemonName, pokemons, loading } = props;
@@ -24,6 +25,7 @@ function PokemonDetail(props) {
 
     function renderPokemon() {
         const pokemon = pokemons.filter((pokemon) => pokemon.data.name === pokemonName)
+        
         return (
             <Card typeBg={pokemon[0].data.types[0].type.name}>
                 <ImgsContainer >
@@ -80,8 +82,8 @@ function PokemonDetail(props) {
     return (
         <CardContainer>
             <h1>Detalhes</h1>
-            {loading && <p>carregando...</p>}
-            {!loading && renderPokemon()}
+            {loading && <section><ClipLoader color="#fff" size="80px"/></section>}
+            {loading || renderPokemon()}
 
         </CardContainer>
     )

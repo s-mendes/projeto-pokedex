@@ -8,7 +8,12 @@ import { getPokemons, getPokemonData } from '../API/pokemonAPI'
 function Router() {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [pokemonsPokedex, setPokemonsPokedex] = useState("");
+    const [ allPokemonsMenuVisible, setAllPokemonsMenuVisible ] = useState(false)
+    const [ pokemonsPokedex, setPokemonsPokedex ] = useState(localStorage.getItem('pokedex') ? JSON.parse(localStorage.getItem('pokedex')) : []);
+    const [ pokedexMenu, setPokedexMenu ] = useState(true)
+    const [ onDetailPage, setOnDetailPage ] = useState(false)
+    const [ catchPokemon, setCatchPokemon ] = useState(false)
+    const [ deletePokemon, setDeletePokemon ] = useState(false)
 
     async function getAllPokemonsData() {
         try {
@@ -29,7 +34,9 @@ function Router() {
         getAllPokemonsData();
     }, [Promise]);
 
-
+    useEffect(() => {
+        localStorage.setItem('pokedex', JSON.stringify(pokemonsPokedex));
+    }, [pokemonsPokedex]);
 
     return (
         <BrowserRouter>
@@ -38,12 +45,47 @@ function Router() {
                     <PokemonListPage
                         loading={loading}
                         pokemons={pokemons}
+                        allPokemonsMenuVisible={allPokemonsMenuVisible}
+                        setAllPokemonsMenuVisible={setAllPokemonsMenuVisible}
+                        setPokemonsPokedex={setPokemonsPokedex}
+                        pokemonsPokedex={pokemonsPokedex}
+                        setPokedexMenu={setPokedexMenu}
+                        pokedexMenu={pokedexMenu}
+                        onDetailPage={onDetailPage}
+                        setOnDetailPage={setOnDetailPage}
+                        catchPokemon={catchPokemon}
+                        setCatchPokemon={setCatchPokemon}
+                        deletePokemon={deletePokemon}
+                        setDeletePokemon={setDeletePokemon}
                     />} />
-                <Route path={'/pokedex'} element={<PokedexPage />} />
+                <Route path={'/pokedex'} element={
+                    <PokedexPage 
+                        allPokemonsMenuVisible={allPokemonsMenuVisible}
+                        setAllPokemonsMenuVisible={setAllPokemonsMenuVisible}
+                        pokemonsPokedex={pokemonsPokedex}
+                        setPokemonsPokedex={setPokemonsPokedex}
+                        loading={loading}
+                        pokemons={pokemons}
+                        setPokedexMenu={setPokedexMenu}
+                        pokedexMenu={pokedexMenu}
+                        onDetailPage={onDetailPage}
+                        setOnDetailPage={setOnDetailPage}
+                        catchPokemon={catchPokemon}
+                        setCatchPokemon={setCatchPokemon}
+                        deletePokemon={deletePokemon}
+                        setDeletePokemon={setDeletePokemon}
+                    />} />
                 <Route path={'/detail/:pokemonName'} element={
                     <PokemonDetailPage
                         loading={loading}
                         pokemons={pokemons}
+                        allPokemonsMenuVisible={allPokemonsMenuVisible}
+                        setAllPokemonsMenuVisible={setAllPokemonsMenuVisible}
+                        setPokedexMenu={setPokedexMenu}
+                        pokedexMenu={pokedexMenu}
+                        pokemonsPokedex={pokemonsPokedex}
+                        onDetailPage={onDetailPage}
+                        setOnDetailPage={setOnDetailPage}
                     />} />
 
             </Routes>
