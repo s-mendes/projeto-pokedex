@@ -96,7 +96,7 @@ export const ImgsContainer = styled.div`
         align-items: center;
         justify-content: center;
         img{
-            scale: 3;
+            scale: 2.9;
         }
     }
 `

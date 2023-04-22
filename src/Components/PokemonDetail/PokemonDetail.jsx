@@ -1,6 +1,6 @@
 import { CardContainer, ImgsContainer, StatusContainer, PokemonInfoContainer, Infos, Moves, PokemonImage, Card, PokemonId, PokemonName, PokemonTypes, Type, StatsBar } from './PokemonDetailStyle'
 import useUpperCase from '../../hooks/useUpperCase'
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { ClipLoader } from 'react-spinners'
 
 function PokemonDetail(props) {
@@ -23,9 +23,9 @@ function PokemonDetail(props) {
         return percent;
     }
 
-
     function renderPokemon() {
         const pokemon = pokemons.filter((pokemon) => pokemon.data.name === pokemonName)
+        
         return (
             <Card typeBg={pokemon[0].data.types[0].type.name}>
                 <ImgsContainer >

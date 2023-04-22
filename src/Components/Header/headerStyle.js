@@ -48,3 +48,19 @@ export const PokedexButton = styled.button`
     color: #FFFFFF;
     cursor: pointer;
 `
+
+export const DeleteButton = styled.button`
+    width: 280px;
+    justify-self: flex-end;
+    padding: 1rem 4rem;
+    background: #FF6262;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+`

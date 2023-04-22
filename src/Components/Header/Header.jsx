@@ -1,22 +1,40 @@
 import logo from '/logo.png';
-import { HeaderContainer, Logo, AllPokemons, PokedexButton } from './headerStyle'
+import { HeaderContainer, Logo, AllPokemons, PokedexButton, DeleteButton } from './headerStyle'
 import { IoChevronBackSharp } from "react-icons/io5";
-import { goToHome } from '../../routes/coordinator';
+import { goToHome, goToPokedex } from '../../routes/coordinator';
 import { useNavigate } from 'react-router-dom';
 
 function Header(props) {
 
     const navigate = useNavigate()
+    console.log(props.onDetailPage)
 
-    console.log(props)
+
+    function renderPokedexButton() {
+        return (
+            <PokedexButton
+                onClick={() => goToPokedex(navigate)}
+            >
+                Pokedex
+            </PokedexButton>
+        )
+    }
+
+    function renderCaptureDeleteButton() {
+        return (
+            <DeleteButton>Excluir da Pokedex</DeleteButton>
+        )
+    }
+
     return (
         <HeaderContainer>
-            <AllPokemons 
+            <AllPokemons
                 onClick={() => goToHome(navigate)}
                 allPokemonsMenuVisible={props.allPokemonsMenuVisible}
             ><IoChevronBackSharp /> <u>Todos os Pokemons</u></AllPokemons>
             <Logo src={logo} alt="" />
-            <PokedexButton>Pokedex</PokedexButton>
+            {props.pokedexMenu && renderPokedexButton()}
+            {props.onDetailPage && renderCaptureDeleteButton()}
         </HeaderContainer>
     )
 }

@@ -1,12 +1,34 @@
-import React from 'react';
-import { PokemonCard, PokemonId, PokemonName, PokemonTypes, PokemonDetails, PokemonImage, CaptureButton, Type } from './PokemonStyle'
+import React, { useEffect, useState } from 'react';
+import { PokemonCard, PokemonId, PokemonName, PokemonTypes, PokemonDetails, PokemonImage, CaptureButton, Type, DeleteButton } from './PokemonStyle'
 import { useNavigate } from 'react-router-dom';
 import { goToDetailPage } from '../../routes/coordinator'
 import useUpperCase from '../../hooks/useUpperCase'
 
 function Pokemon(props) {
-    const { pokemon } = props;
+    const { pokemon, setPokemonsPokedex, pokemonsPokedex, setCatchPokemon, setDeletePokemon } = props;
     const navigate = useNavigate();
+
+    const [onPokedex, setOnPokedex] = useState(false);
+
+    function capturePokemon() {
+        setPokemonsPokedex([...pokemonsPokedex, pokemon])
+        setCatchPokemon(true)
+    }
+
+    function deletePokemon() {
+        const newPokedex = pokemonsPokedex.filter((pokemonPokedex) => pokemonPokedex.id !== pokemon.id)
+        setPokemonsPokedex(newPokedex)
+        setOnPokedex(false)
+        setDeletePokemon(true)
+    }
+
+    useEffect(() => {
+        pokemonsPokedex.map((pokemonPokedex) => {
+            if (pokemon.id === pokemonPokedex.id) {
+                setOnPokedex(true)
+            }
+        }), [pokemonsPokedex]
+    })
 
     return (
         <>
@@ -31,9 +53,17 @@ function Pokemon(props) {
                         Detalhes
                     </PokemonDetails>
                     <PokemonImage src={pokemon.sprites.other["official-artwork"].front_default} />
-                    <CaptureButton>
-                        Capturar!
-                    </CaptureButton>
+                    {onPokedex ?
+                        (
+                            <DeleteButton onClick={deletePokemon}>
+                                Excluir
+                            </DeleteButton>
+                        ) :
+                        (
+                            <CaptureButton onClick={capturePokemon}>
+                                Capturar!
+                            </CaptureButton>
+                        )}
                 </div>
             </PokemonCard>
 

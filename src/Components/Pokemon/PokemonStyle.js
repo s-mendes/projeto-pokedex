@@ -231,9 +231,30 @@ export const CaptureButton = styled.button`
     line-height: 24px;
     position: absolute;
     transform: translate(175%, 0%);
-    /* right: 300px;
-    top: 55px; */
     
+    :hover {
+        cursor: pointer;
+    }
+`
+
+export const DeleteButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 19px 50px;
+    width: 146px;
+    height: 38px;
+    background-color: #FF6262;
+    border-radius: 8px;
+    border-style: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    position: absolute;
+    color: #FFFFFF;
+    transform: translate(175%, 0%);
     :hover {
         cursor: pointer;
     }
