@@ -7,8 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function Header(props) {
 
     const navigate = useNavigate()
-    console.log(props.onDetailPage)
-
 
     function renderPokedexButton() {
         return (
