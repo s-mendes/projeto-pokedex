@@ -67,10 +67,11 @@ function PokemonDetail(props) {
                     </Infos>
                     <Moves>
                         <h2>Moves:</h2>
-                        <span>{pokemon[0].data.moves[0].move ? useUpperCase(pokemon[0].data.moves[0].move.name) : <></>}</span>
-                        <span>{pokemon[0].data.moves[1].move ? useUpperCase(pokemon[0].data.moves[1].move.name) : <></>}</span>
-                        <span>{pokemon[0].data.moves[2].move ? useUpperCase(pokemon[0].data.moves[2].move.name) : <></>}</span>
-                        <span>{pokemon[0].data.moves[3].move ? useUpperCase(pokemon[0].data.moves[3].move.name) : <></>}</span>
+                        {pokemon[0].data.moves.map((move) => {
+                            return (
+                                <span key={move.move.name}>{useUpperCase(move.move.name)}</span>
+                            )
+                        })}
                     </Moves>
                 </PokemonInfoContainer>
                 <PokemonImage src={pokemon[0].data.sprites.other["official-artwork"].front_default} />

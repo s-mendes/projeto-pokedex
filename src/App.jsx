@@ -1,5 +1,6 @@
 import Router from "./routes/Router"
 import { createGlobalStyle } from 'styled-components'
+import GlobalState from "./contexts/GlobalState"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -17,7 +18,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Router />
+      <GlobalState>
+        <Router />
+      </GlobalState>
     </>
   )
 }

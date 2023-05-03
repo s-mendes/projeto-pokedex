@@ -2,27 +2,54 @@ import { useEffect } from 'react';
 import Header from '../Components/Header/Header';
 import PokemonDetail from '../Components/PokemonDetail/PokemonDetail';
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import GlobalContext from '../contexts/GlobalContext';
+import Catch from '../Components/CatchAndDelete/Catch'
+import Delete from '../Components/CatchAndDelete/Delete'
 
-function PokemonDetailPage (props) {
+function PokemonDetailPage() {
+
+    const {
+        setAllPokemonsMenuVisible,
+        setPokedexMenu,
+        setOnDetailPage,
+        allPokemonsMenuVisible,
+        pokedexMenu,
+        onDetailPage,
+        pokemons,
+        loading,
+        catchPokemon,
+        setCatchPokemon,
+        deletePokemon,
+        setDeletePokemon
+    } = useContext(GlobalContext)
 
     const pathParams = useParams();
 
     useEffect(() => {
-        props.setAllPokemonsMenuVisible(true)
-        props.setPokedexMenu(false)
-        props.setOnDetailPage(true)
+        setAllPokemonsMenuVisible(true)
+        setPokedexMenu(false)
+        setOnDetailPage(true)
     }, []);
     return (
         <>
-            <Header                 
-                allPokemonsMenuVisible={props.allPokemonsMenuVisible}
-                pokedexMenu={props.pokedexMenu}
-                onDetailPage={props.onDetailPage}
+            <Header
+                allPokemonsMenuVisible={allPokemonsMenuVisible}
+                pokedexMenu={pokedexMenu}
+                onDetailPage={onDetailPage}
             />
-            <PokemonDetail 
-                pokemonName={pathParams.pokemonName} 
-                pokemons={props.pokemons}
-                loading={props.loading}
+            <PokemonDetail
+                pokemonName={pathParams.pokemonName}
+                pokemons={pokemons}
+                loading={loading}
+            />
+            <Catch
+                catchPokemon={catchPokemon}
+                setCatchPokemon={setCatchPokemon}
+            />
+            <Delete
+                deletePokemon={deletePokemon}
+                setDeletePokemon={setDeletePokemon}
             />
         </>
     )
