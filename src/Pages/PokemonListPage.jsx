@@ -3,37 +3,56 @@ import Header from '../Components/Header/Header'
 import PokemonCard from '../Components/PokemonCard/PokemonCard';
 import Catch from '../Components/CatchAndDelete/Catch'
 import Delete from '../Components/CatchAndDelete/Delete'
+import { useContext } from 'react';
+import GlobalContext from '../contexts/GlobalContext';
 
-function PokemonListPage (props) {
+function PokemonListPage () {
+
+    const { 
+        setAllPokemonsMenuVisible, 
+        setPokedexMenu, 
+        setOnDetailPage, 
+        allPokemonsMenuVisible, 
+        pokedexMenu, 
+        pokemonsPokedex,
+        onDetailPage,
+        setPokemonsPokedex,
+        pokemons,
+        loading,
+        setCatchPokemon,
+        setDeletePokemon,
+        catchPokemon,
+        deletePokemon
+    } = useContext(GlobalContext)
 
     useEffect(() => {
-        props.setAllPokemonsMenuVisible(false)
-        props.setPokedexMenu(true)
-        props.setOnDetailPage(false)
+        setAllPokemonsMenuVisible(false)
+        setPokedexMenu(true)
+        setOnDetailPage(false)
     }, []);
     
     return (
     <>
         <Header                         
-            allPokemonsMenuVisible={props.allPokemonsMenuVisible}
-            pokedexMenu={props.pokedexMenu}
-            onDetailPage={props.onDetailPage}
+            allPokemonsMenuVisible={allPokemonsMenuVisible}
+            pokedexMenu={pokedexMenu}
+            onDetailPage={onDetailPage}
         />
         <PokemonCard
-            pokemons={props.pokemons}
-            loading={props.loading}
-            pokemonsPokedex={props.pokemonsPokedex}
-            setPokemonsPokedex={props.setPokemonsPokedex}
-            setCatchPokemon={props.setCatchPokemon}
-            setDeletePokemon={props.setDeletePokemon}
+            pokemons={pokemons}
+            loading={loading}
+            pokemonsPokedex={pokemonsPokedex}
+            setPokemonsPokedex={setPokemonsPokedex}
+            setCatchPokemon={setCatchPokemon}
+            setDeletePokemon={setDeletePokemon}
         />
         <Catch 
-            catchPokemon={props.catchPokemon}
-            setCatchPokemon={props.setCatchPokemon}
+            catchPokemon={catchPokemon}
+            setCatchPokemon={setCatchPokemon}
         />
         <Delete 
-            deletePokemon={props.deletePokemon}
-            setDeletePokemon={props.setDeletePokemon}
+            deletePokemon={deletePokemon}
+            setDeletePokemon={setDeletePokemon}
         />
     </>
     )

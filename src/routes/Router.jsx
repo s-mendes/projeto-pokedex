@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { getPokemons, getPokemonData } from '../API/pokemonAPI'
 
 function Router() {
-    const [pokemons, setPokemons] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [ pokemons, setPokemons ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
     const [ allPokemonsMenuVisible, setAllPokemonsMenuVisible ] = useState(false)
     const [ pokemonsPokedex, setPokemonsPokedex ] = useState(localStorage.getItem('pokedex') ? JSON.parse(localStorage.getItem('pokedex')) : []);
     const [ pokedexMenu, setPokedexMenu ] = useState(true)

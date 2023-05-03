@@ -297,7 +297,22 @@ export const Moves = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 75.5%;
+    height: 27.40em;
+    overflow-y: auto;
+
+    ::-webkit-scrollbar {
+        display: block;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.07);
+        border-radius: 0 8px 8px 0
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+        border-radius: 0 8px 8px 0
+    }
     
     span {
         padding: 0.5rem 0.5rem;
