@@ -18,4 +18,4 @@ Consumir a API https://pokeapi.co/ e inicialmente será renderizado os Pokemons 
 
 ## Acesso a aplicação
 
-Link: [acesse aqui](https://labecommerce.netlify.app/)
+Link: [acesse aqui](https://se-pokedex.netlify.app/)
